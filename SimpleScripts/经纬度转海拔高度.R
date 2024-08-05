@@ -45,7 +45,7 @@ dms_to_decimal <- function(dms_string) {
 ##在excel中直接修改替换
 
 # 正确创建点坐标矩阵
-LongLat_data<-data.frame(x=round((as.numeric(dms_to_decimal(data$经度))),2),y=round(as.numeric(dms_to_decimal(data$纬度)),2))
+LongLat_data<-data.frame(x=(as.numeric(dms_to_decimal(data$经度))),y=as.numeric(dms_to_decimal(data$纬度)))
 #
 #unique(is.na(LongLat_data$x))
 #unique(is.na(LongLat_data$y))
