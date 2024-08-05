@@ -63,7 +63,7 @@ mts_raster <- rast(mts_sf, nrow = 5, ncol = 5)
 mts_raster_loc <- terra::rasterize(mts_sf, rast(mts_sf, nrow = 5, ncol = 5))
 result<-get_elev_point(locations = LongLat_data, prj = ll_prj, src = "aws")
 #可以从多个网络服务可以提供栅格高程数据，这些服务允许用户访问地形的数字表示形式。
-result1<-get_elev_point(locations = LongLat_data, prj = ll_prj)
+#result1<-get_elev_point(locations = LongLat_data, prj = ll_prj)
 high_data<-cbind(LongLat_data,result$elevation)
 names(high_data)<-c("经度","纬度","海拔")
 unique(is.na(high_data$海拔))
