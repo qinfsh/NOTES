@@ -34,6 +34,7 @@ def find_metadata(path,filename):
         #在读取的时候要注意该方式的读取将换行符也读取到content中
         content = content.rstrip('\n')  # 去除行尾的换行符
         while content:
+            content = content.rstrip('\n')  # 去除行尾的换行符
             if "Identifiers" in content:
                 count = count + 1 
                 identify = content[13:].split(";")
@@ -83,7 +84,6 @@ def find_metadata(path,filename):
                 fill_list(depth,count,"")
                 fill_list(Id,count,"")
             content = file.readline()
-            content = content.rstrip('\n')  # 去除行尾的换行符
         results = []
         for i in range(len(accession)):
             results.append([BioSample[i],Sample_name[i],SRA_number[i],Id[i],depth[i],organism[i],\
