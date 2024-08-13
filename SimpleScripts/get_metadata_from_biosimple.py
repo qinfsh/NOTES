@@ -83,6 +83,7 @@ def find_metadata(path,filename):
                 fill_list(depth,count,"")
                 fill_list(Id,count,"")
             content = file.readline()
+            content = content.rstrip('\n')  # 去除行尾的换行符
         results = []
         for i in range(len(accession)):
             results.append([BioSample[i],Sample_name[i],SRA_number[i],Id[i],depth[i],organism[i],\
