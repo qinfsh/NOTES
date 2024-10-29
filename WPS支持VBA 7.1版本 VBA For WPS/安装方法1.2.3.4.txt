@@ -1,5 +1,0 @@
-﻿VBE7.1安装方法：
-适用于安装 WPS 2019 版本的 缺少 VBA 模块的 亲测可用，内含 VBA 7.1 安装顺序1、2、3、4按照顺序安装；
-
-1.安装MSVCRTRedist\Release目录下32位的安装包，此安装包为运行时库
-3.安装VBARedist\Release目录下32位的Vba71.msi、Vba71_1033.msi、Vba71_2052.msi三个安装包
