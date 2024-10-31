@@ -1,0 +1,5 @@
+1.conda base环境回溯  
+##查看版本信息  
+conda list --revision
+##回溯  
+conda install --revision 19
