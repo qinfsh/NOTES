@@ -5,5 +5,5 @@
     ###3.修改miniconda3/etc/profile.d下的conda.sh等文件地址   
     ###4.最后，使用source .bashrc  
 具体操作可参考：  
-![]("https://github.com/qinfsh/NOTES/photos/数据迁移conda修复1.png")  
+![](https://github.com/qinfsh/NOTES/blob/main/photos/%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BBconda%E4%BF%AE%E5%A4%8D1.png)  
 ![]("https://github.com/qinfsh/NOTES/photos/数据迁移conda修复2.png")
