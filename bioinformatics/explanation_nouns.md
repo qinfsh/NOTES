@@ -13,7 +13,7 @@
 多重耐药细菌（multi-drug resistance bacteria,MDRO）: 指对对**至少三种**或更多**抗菌药物类别**中的一种药物表现出**获得性不敏感**的细菌。\
 广泛耐药细菌（extensively drug-resistant bacteria,XDR）：对除**两种或更少抗菌药物类别**之外的所有类别中至少一种药物**不敏感**（即细菌分离株仅对一种或两种类别敏感）。\
 泛耐药细菌（pandrug-resistant bacteria,PDR）：对**所有抗菌药物类别**中的所有药物均不敏感。\
-**常见的抗菌药物类别**如下所示
+**常见的抗菌药物类别**如下所示：\
 eg.Criteria for defining MDR, XDR and PDR in S. aureus
 | Antimicrobial category | Antimicrobial agent | Results of antimicrobial susceptibility testing (S or NS) |
 | :----: | :----: | :----: | 
