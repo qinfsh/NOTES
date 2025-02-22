@@ -39,6 +39,7 @@ eg.Criteria for defining MDR, XDR and PDR in S. aureus
 | Tetracyclines | Tetracycline | |
 |               | Doxycycline	| |
 |               | Minocycline	| |
+
 **抗菌机制**包括：药物作用靶位改变、产生抗菌药物灭活酶（如氨基糖苷修饰酶）、药物到达作用靶位量减小（外膜孔蛋白通透性下降）等。
 
 ### 生物信息学相关知识
