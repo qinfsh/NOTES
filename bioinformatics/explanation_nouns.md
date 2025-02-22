@@ -8,11 +8,36 @@
 
 
 ### 抗菌肽相关知识
-参考文章：https://doi.org/10.1111/j.1469-0691.2011.03570.x
-多重耐药细菌（multi-drug resistance bacteria,MDR）: 指对对**至少三种**或更多**抗菌药物类别**中的一种药物表现出**获得性不敏感**的细菌。\
+**参考文章**：https://doi.org/10.1111/j.1469-0691.2011.03570.x
+
+多重耐药细菌（multi-drug resistance bacteria,MDRO）: 指对对**至少三种**或更多**抗菌药物类别**中的一种药物表现出**获得性不敏感**的细菌。\
 广泛耐药细菌（extensively drug-resistant bacteria,XDR）：对除**两种或更少抗菌药物类别**之外的所有类别中至少一种药物**不敏感**（即细菌分离株仅对一种或两种类别敏感）。\
 泛耐药细菌（pandrug-resistant bacteria,PDR）：对**所有抗菌药物类别**中的所有药物均不敏感。\
-**常见的抗菌药物**包括：\
+**常见的抗菌药物类别**包括：
+| Antimicrobial category | Antimicrobial agent | Results of antimicrobial susceptibility testing (S or NS) |
+| :----: | :----: | :----: | 
+| Aminoglycosides | Gentamicin | |
+| Ansamycins | Rifampin/rifampicin | |
+| Anti-MRSA cephalosporins | Ceftaroline | |
+| Anti-staphylococcal β-lactams (or cephamycins) | Oxacillin (or cefoxitin)a | |
+| Fluoroquinolones | Ciprofloxacin | |
+|                  | Moxifloxacin | |
+| Folate pathway inhibitors | Trimethoprim-sulphamethoxazole | |
+| Fucidanes | Fusidic acid | |
+| Glycopeptides | Vancomycin | |
+|               | Teicoplanin | |
+|               | Telavancin | |
+| Glycylcyclines | Tigecycline | |	
+| Lincosamides | Clindamycin | |
+| Lipopeptides | Daptomycin | |
+| Macrolides | Erythromycin	| |
+| Oxazolidinones | Linezolid | |	
+| Phenicols | Chloramphenicol	| |
+| Phosphonic acids | Fosfomycin | |	
+| Streptogramins | Quinupristin-dalfopristin | |
+| Tetracyclines | Tetracycline | |
+|               | Doxycycline	| |
+|               | Minocycline	| |
 
 **抗菌机制**包括：药物作用靶位改变、产生抗菌药物灭活酶（如氨基糖苷修饰酶）、药物到达作用靶位量减小（外膜孔蛋白通透性下降）等。
 
