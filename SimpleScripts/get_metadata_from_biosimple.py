@@ -17,17 +17,24 @@ def find_metadata(path,filename):
     #Organism
     organism = []
     #Attributes
-    collection_time = []
-    depth = []
-    broad_scale_environment = []
-    local_scale_environment = []
-    environment = [] #全称是environmental medium
-    location = [] #全称是geographic location
-    latitude_and_longitude = []
+    # Description
     Id = []
     accession = []
 
+    # 预定义的变量列表
+    final_var = ["BioSample","Sample_name","SRA_number","organism","Id","accession"]
     count = 0
+    is_Attributes = "no"
+
+    # 使用字典来存储动态变量的值
+    dynamic_vars = {
+        "BioSample": BioSample,
+        "Sample_name": Sample_name,
+        "SRA_number": SRA_number,
+        "organism": organism,
+        "Id": Id,
+        "accession": accession
+    }
 
     with open(path+filename,"r",encoding="utf-8") as file:
         content = file.readline()
@@ -36,7 +43,7 @@ def find_metadata(path,filename):
         while content:
             content = content.rstrip('\n')  # 去除行尾的换行符
             if "Identifiers" in content:
-                count = count + 1 
+                count += 1 
                 identify = content[13:].split(";")
                 for data in identify:
                     if "BioSample" in data:
@@ -45,54 +52,54 @@ def find_metadata(path,filename):
                         Sample_name.append(data[14:])
                     elif "SRA" in data:
                         SRA_number.append(data[6:])
-            elif content[0:8] == "Organism":
+            elif "Organism" in content:
                 organism.append(content[10:])
-            elif "collection date" in content:
-                collection_time.append(re.findall(r'"(.*?)"',content)[0])#使用正则表达式提取""中的内容;re.search返回第一个匹配值；re.findall返回一个列表
-            elif "broad-scale environmental context" in content:
-                if len(re.findall(r'"(.*?)"',content))!=0 :
-                    broad_scale_environment.append(re.findall(r'"(.*?)"',content)[0])
-            elif "local-scale environmental context" in content:
-                if len(re.findall(r'"(.*?)"',content))!=0 :
-                    local_scale_environment.append(re.findall(r'"(.*?)"',content)[0])
-            elif "environmental medium" in content:
-                if len(re.findall(r'"(.*?)"',content))!=0 :
-                    environment.append(re.findall(r'"(.*?)"',content)[0])
-            elif "geographic location" in content:
-                if len(re.findall(r'"(.*?)"',content))!=0 :
-                    location.append(re.findall(r'"(.*?)"',content)[0])
-            elif "latitude and longitude" in content:
-                if len(re.findall(r'"(.*?)"',content))!=0 :
-                    latitude_and_longitude.append(re.findall(r'"(.*?)"',content)[0])
-            elif "depth" in content:
-                if len(re.findall(r'"(.*?)"',content))!=0 :
-                    depth.append(re.findall(r'"(.*?)"',content)[0])
-            elif "Id" in content:
+            elif "Attributes" in content:
+                is_Attributes = "yes"
+            elif "Description" in content:
+                is_Attributes = "no"
+            elif "ID:" in content:
                 if len(re.findall(r'"(.*?)"',content))!=0 :
                     Id.append(re.findall(r'"(.*?)"',content)[0])
             elif "Accession" in content:
                 accession.append(content[11:24])
-                fill_list(Sample_name,count,"")
-                fill_list(SRA_number,count,"")
-                fill_list(organism,count,"")
-                fill_list(broad_scale_environment,count,"")
-                fill_list(local_scale_environment,count,"")
-                fill_list(environment,count,"")
-                fill_list(location,count,"")
-                fill_list(latitude_and_longitude,count,"")
-                fill_list(collection_time,count,"")
-                fill_list(depth,count,"")
-                fill_list(Id,count,"")
+
+            # 进行下一个判断语句，将Attributes中的所有信息保存
+            if is_Attributes == "yes":
+                # 使用正则表达式提取""中的内容;re.search返回第一个匹配值；re.findall返回一个列表
+                new_value = re.findall(r'"(.*?)"',content)[0]
+                pattern = r'/(?=[^/]+=)([^=]+)'
+                var = re.findall(pattern, content)
+                if not var:
+                    print(f"Warning: No variable found in content: {content}")
+                else:
+                    var = re.sub(r'\s+', '_', var)
+                    if var in final_var:
+                        # 如果这个列表存在，便将值添加进去
+                        dynamic_vars[var].append(new_value)
+                    else:
+                        # 列表不存在
+                        # 创建一个包含 count 个空列表的结构
+                        final_var.append(var)
+                        if count == 1:
+                            dynamic_vars[var] = []
+                        else :
+                            dynamic_vars[var] = [""] * count
+                            dynamic_vars[var][-1] = new_value
+            # 填充所有列表，确保长度一致
+            for var_name in final_var :
+                fill_list(dynamic_vars[var_name],count,"")
+
             content = file.readline()
         results = []
-        for i in range(len(accession)):
-            results.append([BioSample[i],Sample_name[i],SRA_number[i],Id[i],depth[i],organism[i],\
-                            broad_scale_environment[i],local_scale_environment[i],environment[i],\
-                                location[i],latitude_and_longitude[i],collection_time[i],accession[i]])
+        for i in range(count):
+            result = []
+            for var_name in final_var:
+                result.append(dynamic_vars[var_name][i])
+            results.append(result)
+        
         #列表是多维的，可以将其转换为 DataFrame。
-        results = pd.DataFrame(results,columns=["BioSample","Sample name","SRA number","Id","depth",\
-                                                "organism","broad scale environment","local scale environment",\
-                                                    "environmental medium","geographic location","latitude and longitude","collection time","accession"])
+        results = pd.DataFrame(results,columns=final_var)
         return results
  
 
