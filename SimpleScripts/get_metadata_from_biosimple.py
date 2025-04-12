@@ -110,7 +110,11 @@ path = "D:\\schoolData\\data\\Sci_research_projects\\PTPE\\PRGR_hot_spring\\Glob
 file1 = "Hs_biosample_result.txt"
 file2 = "Hv_biosample_result.txt"
 hot_spring_data = find_metadata(path,file1)
+# 将 "N/A" 替换为 ""
+hot_spring_data = hot_spring_data.replace('N/A', "")
 Hydrothermal_vent_data = find_metadata(path,file2)
+# 将 "N/A" 替换为 ""
+Hydrothermal_vent_data = Hydrothermal_vent_data.replace('N/A', "")
 
 #使用pandas包中的concat()函数按行合并，即将第二个数据框追加到第一个数据框的下方。
 data = pd.concat([hot_spring_data,Hydrothermal_vent_data],ignore_index=True) ##按列合并将ignore_index=True换成axis=1
