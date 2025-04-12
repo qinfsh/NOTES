@@ -69,11 +69,12 @@ def find_metadata(path,filename):
                 # 使用正则表达式提取""中的内容;re.search返回第一个匹配值；re.findall返回一个列表
                 if len(re.findall(r'"(.*?)"',content))!=0 :
                     new_value = re.findall(r'"(.*?)"',content)[0]
-                    pattern = r'/(?=[^=]+=)"(.*?)"'
+                    pattern = r'/(?=[^/]+=)([^=]+)'
                     var = re.findall(pattern, content)
                     if not var:
                         print(f"Warning: No variable found in content: {content}")
                     else:
+                        var = var[0]
                         var = re.sub(r' +', '_', var)
                         if var in final_var:
                             # 如果这个列表存在，便将值添加进去
