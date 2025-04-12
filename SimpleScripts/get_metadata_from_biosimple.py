@@ -115,5 +115,4 @@ Hydrothermal_vent_data = find_metadata(path,file2)
 #使用pandas包中的concat()函数按行合并，即将第二个数据框追加到第一个数据框的下方。
 data = pd.concat([hot_spring_data,Hydrothermal_vent_data],ignore_index=True) ##按列合并将ignore_index=True换成axis=1
 #使用pandas写入文件
-#使用chunksize参数分批写入
-data.to_excel(path+"hot_spring_metadata.xlsx", index=False, chunksize=1000)
+data.to_excel(path+"hot_spring_metadata.xlsx", index=False)
