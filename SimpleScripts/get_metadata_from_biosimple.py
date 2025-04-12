@@ -44,6 +44,7 @@ def find_metadata(path,filename):
             content = content.rstrip('\n')  # 去除行尾的换行符
             if "Identifiers" in content:
                 count += 1 
+                is_Attributes = "no"
                 identify = content[13:].split(";")
                 for data in identify:
                     if "BioSample" in data:
