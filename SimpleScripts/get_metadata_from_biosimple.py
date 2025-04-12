@@ -67,25 +67,26 @@ def find_metadata(path,filename):
             # 进行下一个判断语句，将Attributes中的所有信息保存
             if is_Attributes == "yes":
                 # 使用正则表达式提取""中的内容;re.search返回第一个匹配值；re.findall返回一个列表
-                new_value = re.findall(r'"(.*?)"',content)[0]
-                pattern = r'/(?=[^/]+=)([^=]+)'
-                var = re.findall(pattern, content)
-                if not var:
-                    print(f"Warning: No variable found in content: {content}")
-                else:
-                    var = re.sub(r'\s+', '_', var)
-                    if var in final_var:
-                        # 如果这个列表存在，便将值添加进去
-                        dynamic_vars[var].append(new_value)
+                if len(re.findall(r'"(.*?)"',content))!=0 :
+                    new_value = re.findall(r'"(.*?)"',content)[0]
+                    pattern = r'/(?=[^=]+=)"(.*?)"'
+                    var = re.findall(pattern, content)
+                    if not var:
+                        print(f"Warning: No variable found in content: {content}")
                     else:
-                        # 列表不存在
-                        # 创建一个包含 count 个空列表的结构
-                        final_var.append(var)
-                        if count == 1:
-                            dynamic_vars[var] = []
-                        else :
-                            dynamic_vars[var] = [""] * count
-                            dynamic_vars[var][-1] = new_value
+                        var = re.sub(r' +', '_', var)
+                        if var in final_var:
+                            # 如果这个列表存在，便将值添加进去
+                            dynamic_vars[var].append(new_value)
+                        else:
+                            # 列表不存在
+                            # 创建一个包含 count 个空列表的结构
+                            final_var.append(var)
+                            if count == 1:
+                                dynamic_vars[var] = []
+                            else :
+                                dynamic_vars[var] = [""] * count
+                                dynamic_vars[var][-1] = new_value
             # 填充所有列表，确保长度一致
             for var_name in final_var :
                 fill_list(dynamic_vars[var_name],count,"")
