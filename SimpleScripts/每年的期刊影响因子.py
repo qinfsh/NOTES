@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 import pandas as pd
 
 # 发送GET请求到API
@@ -76,3 +77,4 @@ results = pd.DataFrame(results,columns=["id","issn","name","ifactor","section","
 
 results.to_excel("2024年影响因子.xlsx", index=False)
 
+print(os.getcwd())
