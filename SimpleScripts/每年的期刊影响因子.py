@@ -3,7 +3,8 @@ import json
 import pandas as pd
 
 # 发送GET请求到API
-response = requests.get('https://www.pubmed.pro/api/openjournal/findJournal?name=&current=1&size=100000')
+response = requests.get("https://medcite.cn/api/openjournal/findJournal?current=1&size=1000000")
+#response = requests.get('https://www.pubmed.pro/api/openjournal/findJournal?name=&current=1&size=100000')
 # 解析JSON响应
 data = response.json()
 journal_data = data["data"]
@@ -67,4 +68,5 @@ for i in range(len(id)):
 results = pd.DataFrame(results,columns=["id","issn","name","ifactor","section","homePage","publishGuide","focus","domainClass","secondDomainClass","description","sectionTwo","isWarning","chineseRate","publishTotal"])
 
 #使用pandas写入文件
+
 results.to_excel("2024年影响因子.xlsx", index=False)
