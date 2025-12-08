@@ -3,10 +3,15 @@ import json
 import pandas as pd
 
 # 发送GET请求到API
-response = requests.get("https://medcite.cn/api/openjournal/findJournal?current=1&size=1000000")
 #response = requests.get('https://www.pubmed.pro/api/openjournal/findJournal?name=&current=1&size=100000')
+url = "https://medcite.cn/api/openjournal/findJournal"
+payload = {"name": "", "current": 1, "size": 100000}
+r=requests.post(url, json=payload)
+print(r.status_code, r.json())
+data = r.json()
+
 # 解析JSON响应
-data = response.json()
+#data = response.json()
 journal_data = data["data"]
 # data和journal_data现在是一个包含API返回数据的Python字典
 
@@ -70,3 +75,4 @@ results = pd.DataFrame(results,columns=["id","issn","name","ifactor","section","
 #使用pandas写入文件
 
 results.to_excel("2024年影响因子.xlsx", index=False)
+
