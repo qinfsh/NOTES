@@ -1,0 +1,2 @@
+可以直接在谷歌搜索"JCR impact factor list"
+https://www.researchgate.net/profile/Haroon-Rashid-20/post/Journal_Citations_Reports_2025/attachment/685bfe8d60f5481d6841e7f1/AS%3A11431281515133896%401750859402498/download/JCRI-mpact-Factors_2025.pdf
